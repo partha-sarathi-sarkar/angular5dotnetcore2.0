@@ -1,11 +1,12 @@
 #!/bin/bash
 set -ev
 
-# Create publish artifact
-dotnet publish -c Release ./angular5dotnetcore2.0/dotnetcoreplusangular5Template.sln
+sudo apt install azure-cli=2.0.25.1
+az login -u partha.sarathi.sarkar95@outlook.com -p partha9007976323
+
 
 # Login to Docker Hub and upload images
-docker login -u $Docker_UserName -p $Docker_Password
-docker build --no-cache -t $Docker_Repo .
-docker tag $Docker_Repo:latest $Docker_Repo:$TRAVIS_BRANCH
-docker push $Docker_Repo
+docker build --no-cache -t dotnetapp .
+docker tag dotnetapp:latest democontainercr.azurecr.io/dotnetapp:v1
+az acr login --name democontainercr
+docker push democontainercr.azurecr.io/dotnetapp:v1

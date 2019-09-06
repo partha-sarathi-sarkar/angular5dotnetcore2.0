@@ -10,14 +10,5 @@ before_install:
 install:
 - dotnet restore ./angular5dotnetcore2.0/dotnetcoreplusangular5Template.sln
 script:
- - dotnet --info
- - echo "$Docker_Repo"
- - dotnet build ./angular5dotnetcore2.0/dotnetcoreplusangular5Template.sln
- - ls -a
  - chmod +x build.sh && bash build.sh
  - chmod +x deploy.sh && bash deploy.sh
-deploy:
- provider: heroku
- api_key:
-   secure: "40d9d619-501a-49c8-b530-e0a0a8f089c9"
- app: test-demo-angulardotnet
