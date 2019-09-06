@@ -23,10 +23,6 @@ jobs:
           command: npm run lint --prefix ./angular5dotnetcore2.0/dotnetcoreplusangular5Template/AngularApp
       
       - run:
-          name: Build Project
-          command: sudo bash build.sh
-      
-      - run:
           name: Deploy to ACR
           command: sudo bash deploy.sh
 
