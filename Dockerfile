@@ -13,8 +13,18 @@
 #COPY /angular5dotnetcore2.0/dotnetcoreplusangular5Template/bin/Release/netcoreapp2.0/publish ./
 #ENTRYPOINT ["dotnet","dotnetcoreplusangular5Template.dll"]
 
-FROM microsoft/aspnetcore:2
-EXPOSE 80
+FROM microsoft/dotnet:sdk AS build-env
 WORKDIR /app
-COPY angular5dotnetcore2.0/dotnetcoreplusangular5Template/published  ./
-ENTRYPOINT ["dotnet","dotnetcoreplusangular5Template.dll"]
+
+# Copy csproj and restore as distinct layers
+COPY . .
+RUN dotnet restore angular5dotnetcore2.0/dotnetcoreplusangular5Template/dotnetcoreplusangular5Template.csproj
+
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish angular5dotnetcore2.0/dotnetcoreplusangular5Template/dotnetcoreplusangular5Template.csproj -c Release -o out
+
+# Build runtime image
+FROM microsoft/dotnet:aspnetcore-runtime
+COPY --from=build-env /angular5dotnetcore2.0/dotnetcoreplusangular5Template/out .
+ENTRYPOINT ["dotnet", "dotnetcoreplusangular5Template.dll"]
