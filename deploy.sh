@@ -1,6 +1,5 @@
 #!/bin/bash
 set -ev
-# Login to Docker Hub and upload images
-docker build --no-cache -t dotnetapp .
-docker tag dotnetapp:latest spartha1995/automatedbuilddemo:latest
-docker push spartha1995/automatedbuilddemo:latest
+#Deploy to Dockerhub
+docker build -t spartha1995/automatedbuilddemo:$CIRCLE_BRANCH .
+#docker push pspartha1995/automatedbuilddemo:$CIRCLE_BRANCH
