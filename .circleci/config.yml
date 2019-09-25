@@ -2,10 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:6-browsers
+      - image: spartha1995/dotnetcore-build
       
     steps:
-      - checkout
+      - checkout 
+      - setup_remote_docker
       - run: 
           name: Install NPM
           command: cd ./angular5dotnetcore2.0/dotnetcoreplusangular5Template/AngularApp && npm install && cd ../../../
@@ -24,6 +25,6 @@ jobs:
       
       - run:
           name: Deploy to ACR
-          command: sudo bash deploy.sh
+          command: chmod +x ./deploy.sh && bash deploy.sh
 
 
