@@ -7,6 +7,10 @@ jobs:
     steps:
       - checkout 
       - setup_remote_docker
+
+      - run:
+          name: Restore Nuget
+          command: dotnet restore ./angular5dotnetcore2.0/dotnetcoreplusangular5Template.sln
       - run: 
           name: Install NPM
           command: cd ./angular5dotnetcore2.0/dotnetcoreplusangular5Template/AngularApp && npm install && cd ../../../
@@ -20,11 +24,16 @@ jobs:
           command: npm run build --prefix ./angular5dotnetcore2.0/dotnetcoreplusangular5Template/AngularApp     
 
       - run:
+          name: Build Project
+          command: dotnet build ./angular5dotnetcore2.0/dotnetcoreplusangular5Template.sln
+
+      - run:
           name: Lint Project
           command: npm run lint --prefix ./angular5dotnetcore2.0/dotnetcoreplusangular5Template/AngularApp
       
-      - run:
-          name: Deploy to ACR
-          command: chmod +x ./deploy.sh && bash deploy.sh
-
-
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "staging" ] || [ "${CIRCLE_BRANCH}" == "development" ]; then
+             chmod +x ./deploy.sh
+             bash deploy.sh
+            fi
