@@ -5,8 +5,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                script{
                 retry(3) {
-                    sh 'deploy.sh'
+                    sh label: '', script: 'sh deploy.sh'
+                }
                 }
             }
         }
