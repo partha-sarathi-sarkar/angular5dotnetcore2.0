@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 retry(3) {
-                    sh './deploy.sh'
+                    sh 'deploy.sh'
                 }
             }
         }
