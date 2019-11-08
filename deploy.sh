@@ -1,5 +1,5 @@
 #!/bin/bash
 set -ev
 #Deploy to Dockerhub
-docker build -t spartha1995/automatedbuilddemo:$CIRCLE_BRANCH .
-#docker push pspartha1995/automatedbuilddemo:$CIRCLE_BRANCH
+docker build -t spartha1995/automatedbuilddemo:latest .
+docker push pspartha1995/automatedbuilddemo:latest
