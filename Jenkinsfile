@@ -7,7 +7,11 @@ pipeline {
                 echo 'Building..'
                 script{
                 retry(3) {
-                    sh label: '', script: 'sh deploy.sh'
+                    sh label: '', script: '''#!/bin/bash
+                    set -ev
+                    #Deploy to Dockerhub
+                     docker build -t spartha1995/automatedbuilddemo:latest .
+                     docker push pspartha1995/automatedbuilddemo:latest'''
                 }
                 }
             }
