@@ -7,6 +7,14 @@ pipeline {
     agent any
 
 stages {
+
+    stage('Build Image') {
+    steps{
+      script {
+        bat "build.bat"
+      }
+    }
+  }
   stage('Building image') {
     steps{
       script {
