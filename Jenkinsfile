@@ -15,9 +15,15 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Unit test') {
             steps {
-                echo 'Testing..'
+                echo 'Unit Test in progress'
+            }
+        }
+
+        stage('Sonar Analysis') {
+            steps {
+                echo 'Sonar Analysis in progress'
             }
         }
         stage('Deploy') {
@@ -27,9 +33,9 @@ pipeline {
             }
         }
     }
-     /* post { 
+      post { 
         always { 
             cleanWs()
         }
-    }*/
+    }
 }
