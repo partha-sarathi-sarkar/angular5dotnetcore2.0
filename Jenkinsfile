@@ -1,27 +1,21 @@
 pipeline {
+    environment {
+    registry = "spartha1995/automatedbuilddemo"
+    registryCredential = 'dockerhub'
+}
+
     agent any
 
-    stages {
-            stage('Build') {
-            steps {
-                echo "Build Project"
-                bat "build.bat"
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo "Docker build and push"
-                bat "deploy.bat"
-            }
-        }
+stages {
+  stage('Building image') {
+    steps{
+      script {
+        docker.build registry + ":%BUILD_NUMBER%"
+      }
     }
-      post { 
+  }
+}
+    post { 
         always { 
             cleanWs()
         }
