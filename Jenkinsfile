@@ -8,6 +8,11 @@ pipeline {
     agent any
 
     stages {
+
+            stage('Update Build Number'){
+                echo 'Updating build number'
+                bat 'generateautomatedbuildnumber.bat'
+            }
             stage('Build') {
             steps {
                 echo "Build Project"
