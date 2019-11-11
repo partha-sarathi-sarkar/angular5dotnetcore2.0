@@ -10,8 +10,10 @@ pipeline {
     stages {
 
             stage('Update Build Number'){
+                steps{
                 echo 'Updating build number'
                 bat 'generateautomatedbuildnumber.bat'
+                }
             }
             stage('Build') {
             steps {
