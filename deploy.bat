@@ -1,5 +1,4 @@
-echo %BRANCH_NAME%
-%imageTag% = %BUILD_NUMBER% and "-" and %BRANCH_NAME%
+%imageTag% = "V1.0.0." and %BUILD_NUMBER%
 echo %imageTag%
 
 call docker build -t automatedbuilddemo .
