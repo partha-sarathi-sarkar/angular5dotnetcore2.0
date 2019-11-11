@@ -1,7 +1,7 @@
 REM TeamCity's auto-incrementing build counter; ensures each build is unique
 
 REM This gets the name of the current Git branch. 
-%branch% = "%BRANCH_NAME%" -replace '_','-'
+%branch% = "%BRANCH_NAME%"
 REM Sometimes the branch will be a full path, e.g., 'refs/heads/master'. 
 REM If so we'll base our logic just on the last part.
 if (%branch%.Contains("/")) 
