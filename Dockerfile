@@ -21,10 +21,10 @@
 #RUN dotnet restore angular5dotnetcore2.0/dotnetcoreplusangular5Template/dotnetcoreplusangular5Template.csproj
 
 # Copy everything else and build
-COPY . .
+#COPY . .
 #RUN dotnet publish angular5dotnetcore2.0/dotnetcoreplusangular5Template/dotnetcoreplusangular5Template.csproj -c Release -o out
 
 # Build runtime image
-FROM microsoft/dotnet:aspnetcore-runtime AS build-publish
-COPY --from=build-env /angular5dotnetcore2.0/dotnetcoreplusangular5Template/out .
+FROM microsoft/dotnet:aspnetcore-runtime
+COPY  angular5dotnetcore2.0/dotnetcoreplusangular5Template/bin/Release/netcoreapp2.0/publish
 ENTRYPOINT ["dotnet", "dotnetcoreplusangular5Template.dll"]
