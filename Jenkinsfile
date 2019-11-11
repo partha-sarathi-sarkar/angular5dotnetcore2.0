@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            stage('Deploy') {
+            stage('Build') {
             steps {
                 echo "Build Project"
                 bat "build.bat"
             }
         }
-        }
+
         stage('Test') {
             steps {
                 echo 'Testing..'
