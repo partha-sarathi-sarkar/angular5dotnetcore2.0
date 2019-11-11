@@ -1,8 +1,8 @@
 pipeline {
-    environment {
+   /* environment {
     registry = "spartha1995/automatedbuild"
     registryCredential = 'dockerhub'
-}
+}*/
 
 
     agent any
@@ -27,9 +27,9 @@ pipeline {
             }
         }
     }
-      post { 
+     /* post { 
         always { 
             cleanWs()
         }
-    }
+    }*/
 }
