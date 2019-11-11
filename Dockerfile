@@ -1,5 +1,5 @@
 # .NET Core on Apprenda
-FROM FROM microsoft/dotnet:sdk AS build-env
+FROM microsoft/dotnet:sdk AS build-env
 WORKDIR /app
 EXPOSE 80
 
