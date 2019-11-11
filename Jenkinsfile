@@ -3,12 +3,16 @@ pipeline {
 
     stages {
         stage('Build') {
+            stage('Deploy') {
             steps {
-                echo 'Building..'
-                script{
-                    bat "build.bat"
-                }
-                }
+                echo "Build Project"
+                bat "build.bat"
+            }
+        }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
             }
         }
         stage('Deploy') {
