@@ -1,4 +1,4 @@
-%imageTag% = "V1.0.0." and %BUILD_NUMBER%
+%imageTag% = "V1.0.0.%BUILD_NUMBER%"
 echo %imageTag%
 
 call docker build -t automatedbuilddemo .
