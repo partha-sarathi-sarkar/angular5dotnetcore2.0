@@ -7,7 +7,7 @@ pipeline {
                 echo 'Building..'
                 script{
                 retry(3) {
-                    sh label: '', script: 'sh deploy.sh'
+                    bat "build.bat"
                 }
                 }
             }
@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                bat "deploy.bat"
             }
         }
     }
