@@ -40,11 +40,11 @@ pipeline {
                 bat label: '', script: 'docker build -t automatedbuilddemo .'
             }
         }
-        stage('Login to dockerhub') {
+        /*stage('Login to dockerhub') {
             steps {
                bat "dockerlogin.bat"
             }
-        }
+        }*/
         stage('Docker Image Tag') {
             steps {
                 echo "Docker build and push"
