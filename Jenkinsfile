@@ -43,7 +43,7 @@ pipeline {
         stage('Login to dockerhub') {
             steps {
                 echo "Docker build and push"
-                bat label: '', script: 'docker login -u $DOCKERHUB_USERNAME --password-stdin'
+                bat label: '', script: 'docker login -u $DOCKERHUB_USERNAME $DOCKERHUB_PASSWORD'
             }
         }
         stage('Docker Image Tag') {
