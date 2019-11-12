@@ -1,7 +1,7 @@
 pipeline {
     environment {
-    dockerhub_username = $DOCKERHUB_USERNAME
-    dockerhub_password = $DOCKERHUB_PASSWORD
+    dockerhub_username = '$DOCKERHUB_USERNAME'
+    dockerhub_password = '$DOCKERHUB_PASSWORD'
 }
 
 
