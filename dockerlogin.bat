@@ -1,0 +1,1 @@
+call docker login -u %DOCKERHUB_USERNAME% --password-stdin
