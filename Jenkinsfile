@@ -48,13 +48,13 @@ pipeline {
         stage('Docker Image Tag') {
             steps {
                 echo "Docker build and push"
-                bat label: '', script: 'docker tag automatedbuilddemo $dockerhub_username:$BUILD_NUMBER'
+                bat label: '', script: 'docker tag automatedbuilddemo %DOCKERHUB_USERNAME%:%BUILD_NUMBER%'
             }
         }
         stage('Docker Push') {
             steps {
                 echo "Docker build and push"
-                bat label: '', script: 'docker push $DOCKERHUB_USERNAME:$BUILD_NUMBER'
+                bat label: '', script: 'docker push %DOCKERHUB_USERNAME%:%BUILD_NUMBER%'
             }
         }
         
