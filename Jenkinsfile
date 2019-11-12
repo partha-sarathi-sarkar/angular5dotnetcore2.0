@@ -1,8 +1,8 @@
 pipeline {
-    environment {
+   /* environment {
     dockerhub_username = '$DOCKERHUB_USERNAME'
     dockerhub_password = '$DOCKERHUB_PASSWORD'
-}
+}*/
 
 
     agent any
@@ -48,13 +48,13 @@ pipeline {
         stage('Docker Image Tag') {
             steps {
                 echo "Docker build and push"
-                bat label: '', script: 'docker tag automatedbuilddemo %DOCKERHUB_USERNAME%:%BUILD_NUMBER%'
+                bat label: '', script: 'docker tag automatedbuilddemo spartha1995/automatedbuilddemo:%BUILD_NUMBER%'
             }
         }
         stage('Docker Push') {
             steps {
                 echo "Docker build and push"
-                bat label: '', script: 'docker push %DOCKERHUB_USERNAME%:%BUILD_NUMBER%'
+                bat label: '', script: 'docker push spartha1995/automatedbuilddemo:%BUILD_NUMBER%'
             }
         }
         
